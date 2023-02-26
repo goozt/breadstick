@@ -1,26 +1,26 @@
 export const images = [
 	{
 		id: 0,
-		imgurl: '/images/image1.avif'
+		imgurl: '/images/image1.jpg'
 	},
 	{
 		id: 1,
-		imgurl: '/images/image2.avif'
+		imgurl: '/images/image2.jpg'
 	},
 	{
 		id: 2,
-		imgurl: '/images/image3.avif'
+		imgurl: '/images/image3.jpg'
 	},
 	{
 		id: 3,
-		imgurl: '/images/image4.avif'
+		imgurl: '/images/image4.jpg'
 	},
 	{
 		id: 4,
-		imgurl: '/images/image5.avif'
+		imgurl: '/images/image5.jpg'
 	},
 	{
 		id: 5,
-		imgurl: '/images/image6.avif'
+		imgurl: '/images/image6.jpg'
 	}
 ];
