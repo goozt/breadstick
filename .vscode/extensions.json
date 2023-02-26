@@ -6,6 +6,7 @@
         "visualstudioexptteam.vscodeintellicode",
         "ms-vscode.vscode-typescript-next",
         "bradlc.vscode-tailwindcss",
-        "syler.sass-indented"
+        "syler.sass-indented",
+        "moalamri.inline-fold"
     ]
 }
