@@ -1,0 +1,35 @@
+<script lang="ts">
+	import { Header, ImageSlider } from '$ui';
+	import { pageTracker } from '$store';
+	import { Grid, Item } from '$ui/menu';
+	import { CartIcon } from '$icons';
+	import { items } from '$data/MenuItems';
+	import { images } from '$data/SliderImages';
+
+	$pageTracker = 'menu';
+
+	export const callback = (event: Event) => {
+		const e = event.target as Element;
+		console.log(e.getAttribute('data-id'));
+		return false;
+	};
+</script>
+
+<Header heading="Menu" />
+<div class="md:container md:mx-auto py-16 px-4">
+	<ImageSlider {images} />
+
+	<Grid paddingYClass="py-16 sm:py-20">
+		{#each items as item}
+			<Item
+				id={String(item.id)}
+				name={item.name}
+				price={item.price}
+				image={item.imageurl}
+				on:click={callback}
+			>
+				<CartIcon /> Add to Cart
+			</Item>
+		{/each}
+	</Grid>
+</div>
