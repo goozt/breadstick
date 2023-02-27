@@ -13,3 +13,12 @@
 <div class="flex content-center max-w-4xl m-auto">
 	<Carousel {images} loop {showCaptions} {showThumbs} {duration} {divClass} />
 </div>
+
+<style lang="scss">
+	:global#default-carousel {
+		width: 100%;
+		img {
+			width: 100%;
+		}
+	}
+</style>
