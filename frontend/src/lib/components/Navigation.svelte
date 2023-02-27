@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { DarkMode, Navbar, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
 	import { pageTracker } from '$store';
+	import type { NavMenu } from '$ui/types';
 
+	export let navMenu: NavMenu[];
 	let navClass = 'bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800';
 	let navDivClass = 'flex flex-wrap justify-between items-center mx-auto max-w-screen-xl';
 	let btnClass =
@@ -30,9 +32,13 @@
 		divClass="nav-bar justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
 		ulClass="nav-menu flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
 	>
-		<NavLi href="/menu" active={$pageTracker == 'menu'} {activeClass} {nonActiveClass}>Menu</NavLi>
-		<NavLi href="/admin" active={$pageTracker == 'admin'} {activeClass} {nonActiveClass}
-			>Admin</NavLi
-		>
+		{#each navMenu as navItem}
+			<NavLi
+				href={navItem.url}
+				active={$pageTracker.name == navItem.name}
+				{activeClass}
+				{nonActiveClass}>{navItem.name}</NavLi
+			>
+		{/each}
 	</NavUl>
 </Navbar>

@@ -2,18 +2,24 @@
 	import '../app.postcss';
 	import { NavBrand, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
 	import { Logo } from '$icons';
-	import { Navigation, Footer } from '$ui';
+	import { Navigation, Header, Footer } from '$ui';
+	import { pageTracker } from '$store';
 	// import { pageTracker } from '$lib/stores.js';
 	// $: active = $pageTracker == 'home';
+
+	const navList = [
+		{ id: 0, name: 'Menu', url: '/menu' },
+		{ id: 1, name: 'Dashboard', url: '/dashboard' }
+	];
 </script>
 
 <main>
 	<div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
 		<header class="sticky top-0 z-40 flex-none mx-auto w-full bg-white dark:bg-gray-900 ">
 			<!-- Navigation Menu -->
-			<Navigation>
+			<Navigation navMenu={navList}>
 				<!-- Left logo -->
-				<NavBrand href="/" name="sdf">
+				<NavBrand href="/">
 					<Logo size="32" />
 					<span
 						class="transition-transform duration-500 self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-2 "
@@ -26,6 +32,9 @@
 		</header>
 		<!-- Content -->
 		<div class="max-w-8xl dark:bg-gray-900">
+			{#if $pageTracker.name != 'Home'}
+				<Header heading={$pageTracker} />
+			{/if}
 			<slot />
 		</div>
 	</div>

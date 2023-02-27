@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { pageTracker } from '$store';
-	$pageTracker = 'home';
+	$pageTracker = { name: 'Home', url: '/' };
 </script>
 
 <div class="relative overflow-hidden" style="padding-bottom: 16rem;">

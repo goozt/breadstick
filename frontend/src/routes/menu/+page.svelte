@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Header, ImageSlider } from '$ui';
+	import { ImageSlider } from '$ui';
 	import { pageTracker } from '$store';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
 	import { items } from '$data/MenuItems';
 	import { images } from '$data/SliderImages';
 
-	$pageTracker = 'menu';
+	$pageTracker = { name: 'Menu', url: '/menu' };
 
 	export const callback = (event: Event) => {
 		const e = event.target as Element;
@@ -15,7 +15,6 @@
 	};
 </script>
 
-<Header heading="Menu" />
 <div class="md:container md:mx-auto py-16 px-4">
 	<ImageSlider {images} />
 
