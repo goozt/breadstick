@@ -2,8 +2,8 @@
 	import '../app.postcss';
 	import { NavBrand, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
 	import { Logo } from '$icons';
-	import { Navigation, Header, Footer } from '$ui';
-	import { pageTracker } from '$store';
+	import { Navigation, Header, Footer, Toast } from '$ui';
+	import { pageTracker, toastChannel } from '$store';
 	// import { pageTracker } from '$lib/stores.js';
 	// $: active = $pageTracker == 'home';
 
@@ -16,6 +16,11 @@
 <main>
 	<div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
 		<header class="sticky top-0 z-40 flex-none mx-auto w-full bg-white dark:bg-gray-900 ">
+			<div class="absolute top-20 right-4">
+				{#each $toastChannel as toastItem}
+					<Toast item={toastItem} />
+				{/each}
+			</div>
 			<!-- Navigation Menu -->
 			<Navigation navMenu={navList}>
 				<!-- Left logo -->

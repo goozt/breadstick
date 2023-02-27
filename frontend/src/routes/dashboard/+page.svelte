@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { pageTracker, itemCollection } from '$store';
+	import { pageTracker, itemCollection, toastChannel } from '$store';
 	import { Grid, Item } from '$ui/menu';
-	import type { MenuItem } from '$ui/types';
-	import { SpeedDial } from '$ui';
-	import { SpeedDialButton } from 'flowbite-svelte';
+	import type { MenuItem, ToastItem } from '$ui-types';
+	import { defaultItems } from '$data/MenuItems';
+	import { SpeedDial, SpeedDialButton } from '$ui';
 	$pageTracker = { name: 'Dashboard', url: 'dashboard' };
+	let toastTimeout = 4000;
 
 	const removeItem = (event: Event) => {
 		const e = event.target as Element;
@@ -21,6 +22,25 @@
 				console.log('Removed item', id, 'successfully');
 			}
 		}
+	};
+
+	const addedItem = () => {
+		const length = defaultItems.length;
+		const randomIndex = Math.floor(Math.random() * length);
+		let item = defaultItems[randomIndex];
+		item.id = length;
+		$itemCollection = [...$itemCollection, item];
+		const toast: ToastItem = { type: 'green', message: 'Item added successfully' };
+		$toastChannel = [...$toastChannel, toast];
+
+		setTimeout(() => {
+			const items: ToastItem[] = $toastChannel;
+			const index = items.indexOf(toast);
+			if (index !== -1) {
+				items.splice(index, 1);
+			}
+			$toastChannel = items;
+		}, toastTimeout);
 	};
 </script>
 
@@ -39,7 +59,7 @@
 </div>
 
 <SpeedDial>
-	<SpeedDialButton name="Add&nbsp;Menu&nbsp;Item" tooltip="left">
+	<SpeedDialButton name="Add&nbsp;Menu&nbsp;Item" on:click={addedItem}>
 		<svg
 			width="75%"
 			height="75%"
@@ -55,7 +75,7 @@
 			/>
 		</svg>
 	</SpeedDialButton>
-	<SpeedDialButton name="Settings" tooltip="left">
+	<SpeedDialButton name="Settings" url="/dashboard/settings">
 		<svg
 			width="60%"
 			height="60%"

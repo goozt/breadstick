@@ -15,3 +15,25 @@ export declare type NavMenu = {
 	name: string;
 	url: string;
 };
+
+export declare type ToastItem = {
+	type:
+		| 'form'
+		| 'none'
+		| 'default'
+		| 'gray'
+		| 'red'
+		| 'yellow'
+		| 'green'
+		| 'indigo'
+		| 'purple'
+		| 'pink'
+		| 'blue'
+		| 'light'
+		| 'dark'
+		| 'dropdown'
+		| 'navbar'
+		| 'navbarUl'
+		| undefined;
+	message: string;
+};

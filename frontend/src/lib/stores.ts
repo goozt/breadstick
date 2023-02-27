@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
-import { items } from '$data/MenuItems';
-import type { NavMenu, MenuItem } from '$ui-types';
+import { defaultItems } from '$data/MenuItems';
+import type { NavMenu, MenuItem, ToastItem } from '$ui-types';
 
 export const pageTracker = writable({ name: 'Home', url: '/' } as NavMenu);
-export const itemCollection = writable(items as MenuItem[]);
+export const itemCollection = writable(defaultItems as MenuItem[]);
+export const toastChannel = writable([] as ToastItem[]);

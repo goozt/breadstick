@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { ImageSlider } from '$ui';
-	import { pageTracker } from '$store';
+	import { pageTracker, itemCollection } from '$store';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
-	import { items } from '$data/MenuItems';
 	import { images } from '$data/SliderImages';
 
 	$pageTracker = { name: 'Menu', url: '/menu' };
@@ -19,7 +18,7 @@
 	<ImageSlider {images} />
 
 	<Grid paddingYClass="py-16 sm:py-20">
-		{#each items as item}
+		{#each $itemCollection as item}
 			<Item
 				id={String(item.id)}
 				name={item.name}
