@@ -22,13 +22,13 @@
 	<!-- Right Bar -->
 	<div class="flex items-center lg:order-2 text-r">
 		<ServerStatus />
-		<button class={btnClass}>
-			<CartIcon classes="w-5 h-5" />
-		</button>
 		<DarkMode {btnClass} />
+		<button class={`${btnClass} bg-yellow-300 hover:bg-yellow-400 dark:hover:bg-yellow-500`}>
+			<CartIcon classes="w-6 h-6 text-gray-700 dark:text-black" />
+		</button>
 		<NavHamburger
 			on:click={toggle}
-			btnClass="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+			btnClass="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-2"
 		/>
 	</div>
 
