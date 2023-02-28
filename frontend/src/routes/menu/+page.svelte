@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ImageSlider } from '$ui';
-	import { pageTracker, itemCollection } from '$store';
+	import { pageTracker } from '$store';
+	import { itemCollection } from '$stores/Menu';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
 	import { images } from '$data/SliderImages';

@@ -1,11 +1,10 @@
 export declare type ImageType = {
-	id: number;
 	name: string;
 	imgurl: string;
 };
 
 export declare type MenuItem = {
-	id: number;
+	id: string;
 	name: string;
 	price: number;
 	imageurl: string;

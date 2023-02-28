@@ -1,39 +1,9 @@
 <script lang="ts">
-	import { pageTracker, itemCollection } from '$store';
-	import { newToast } from '$stores/Toast';
+	import { pageTracker } from '$store';
+	import { addMenuItem, removeMenuItem, itemCollection } from '$stores/Menu';
 	import { Grid, Item } from '$ui/menu';
-	import type { MenuItem } from '$ui-types';
-	import { defaultItems } from '$data/MenuItems';
 	import { SpeedDial, SpeedDialButton } from '$ui';
 	$pageTracker = { name: 'Dashboard', url: 'dashboard' };
-
-	const addedItem = () => {
-		const length = defaultItems.length;
-		const randomIndex = Math.floor(Math.random() * length);
-		let item = defaultItems[randomIndex];
-		item.id = length;
-		$itemCollection = [...$itemCollection, item];
-		newToast('green', 'Added new item to menu.');
-	};
-
-	const removeItem = (event: Event) => {
-		const e = event.target as Element;
-		const id = e.getAttribute('data-id');
-		if (id != null) {
-			const items: MenuItem[] = $itemCollection;
-			const item = items.find((item) => item.id === parseInt(id));
-			if (item) {
-				const index = items.indexOf(item);
-				if (index !== -1) {
-					items.splice(index, 1);
-				}
-				$itemCollection = items;
-				newToast('green', 'Removed ' + item.name + ' from menu');
-				return;
-			}
-		}
-		newToast('red', 'Failed to remove the item from menu');
-	};
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">
@@ -44,14 +14,14 @@
 				name={item.name}
 				price={item.price}
 				image={item.imageurl}
-				on:click={removeItem}>Remove</Item
+				on:click={removeMenuItem}>Remove</Item
 			>
 		{/each}
 	</Grid>
 </div>
 
 <SpeedDial>
-	<SpeedDialButton name="Add&nbsp;Menu&nbsp;Item" on:click={addedItem}>
+	<SpeedDialButton name="Add&nbsp;Menu&nbsp;Item" on:click={addMenuItem}>
 		<svg
 			width="75%"
 			height="75%"
