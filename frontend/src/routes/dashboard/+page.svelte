@@ -1,28 +1,11 @@
 <script lang="ts">
-	import { pageTracker, itemCollection, toastChannel } from '$store';
+	import { pageTracker, itemCollection } from '$store';
+	import { newToast } from '$stores/Toast';
 	import { Grid, Item } from '$ui/menu';
-	import type { MenuItem, ToastItem, ToastItemType } from '$ui-types';
+	import type { MenuItem } from '$ui-types';
 	import { defaultItems } from '$data/MenuItems';
 	import { SpeedDial, SpeedDialButton } from '$ui';
 	$pageTracker = { name: 'Dashboard', url: 'dashboard' };
-	let toastTimeout = 4000;
-
-	const newToast = (toastType: ToastItemType, toastMessage: string) => {
-		const toast: ToastItem = { type: toastType, message: toastMessage };
-		$toastChannel = [...$toastChannel, toast];
-		setTimeout(() => {
-			removeToast(toast);
-		}, toastTimeout);
-	};
-
-	const removeToast = (toast: ToastItem) => {
-		const items: ToastItem[] = $toastChannel;
-		const index = items.indexOf(toast);
-		if (index !== -1) {
-			items.splice(index, 1);
-		}
-		$toastChannel = items;
-	};
 
 	const addedItem = () => {
 		const length = defaultItems.length;

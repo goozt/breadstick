@@ -16,6 +16,7 @@ const config = {
 	kit: {
 		alias: {
 			"$store": "./src/lib/stores.js",
+			"$stores": "./src/lib/stores/*",
 			"$data": "./src/lib/data",
 			"$data/*": "./src/lib/data/*",
 			"$ui": "./src/lib/components",

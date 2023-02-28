@@ -17,6 +17,7 @@ export declare type NavMenu = {
 };
 
 export declare type ToastItem = {
+	id: string;
 	type: ToastItemType;
 	message: string;
 };
