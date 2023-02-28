@@ -17,23 +17,25 @@ export declare type NavMenu = {
 };
 
 export declare type ToastItem = {
-	type:
-		| 'form'
-		| 'none'
-		| 'default'
-		| 'gray'
-		| 'red'
-		| 'yellow'
-		| 'green'
-		| 'indigo'
-		| 'purple'
-		| 'pink'
-		| 'blue'
-		| 'light'
-		| 'dark'
-		| 'dropdown'
-		| 'navbar'
-		| 'navbarUl'
-		| undefined;
+	type: ToastItemType;
 	message: string;
 };
+
+export declare type ToastItemType =
+	| 'form'
+	| 'none'
+	| 'default'
+	| 'gray'
+	| 'red'
+	| 'yellow'
+	| 'green'
+	| 'indigo'
+	| 'purple'
+	| 'pink'
+	| 'blue'
+	| 'light'
+	| 'dark'
+	| 'dropdown'
+	| 'navbar'
+	| 'navbarUl'
+	| undefined;

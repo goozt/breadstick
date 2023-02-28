@@ -1,11 +1,37 @@
 <script lang="ts">
 	import { pageTracker, itemCollection, toastChannel } from '$store';
 	import { Grid, Item } from '$ui/menu';
-	import type { MenuItem, ToastItem } from '$ui-types';
+	import type { MenuItem, ToastItem, ToastItemType } from '$ui-types';
 	import { defaultItems } from '$data/MenuItems';
 	import { SpeedDial, SpeedDialButton } from '$ui';
 	$pageTracker = { name: 'Dashboard', url: 'dashboard' };
 	let toastTimeout = 4000;
+
+	const newToast = (toastType: ToastItemType, toastMessage: string) => {
+		const toast: ToastItem = { type: toastType, message: toastMessage };
+		$toastChannel = [...$toastChannel, toast];
+		setTimeout(() => {
+			removeToast(toast);
+		}, toastTimeout);
+	};
+
+	const removeToast = (toast: ToastItem) => {
+		const items: ToastItem[] = $toastChannel;
+		const index = items.indexOf(toast);
+		if (index !== -1) {
+			items.splice(index, 1);
+		}
+		$toastChannel = items;
+	};
+
+	const addedItem = () => {
+		const length = defaultItems.length;
+		const randomIndex = Math.floor(Math.random() * length);
+		let item = defaultItems[randomIndex];
+		item.id = length;
+		$itemCollection = [...$itemCollection, item];
+		newToast('green', 'Added new item to menu.');
+	};
 
 	const removeItem = (event: Event) => {
 		const e = event.target as Element;
@@ -19,28 +45,11 @@
 					items.splice(index, 1);
 				}
 				$itemCollection = items;
-				console.log('Removed item', id, 'successfully');
+				newToast('green', 'Removed ' + item.name + ' from menu');
+				return;
 			}
 		}
-	};
-
-	const addedItem = () => {
-		const length = defaultItems.length;
-		const randomIndex = Math.floor(Math.random() * length);
-		let item = defaultItems[randomIndex];
-		item.id = length;
-		$itemCollection = [...$itemCollection, item];
-		const toast: ToastItem = { type: 'green', message: 'Item added successfully' };
-		$toastChannel = [...$toastChannel, toast];
-
-		setTimeout(() => {
-			const items: ToastItem[] = $toastChannel;
-			const index = items.indexOf(toast);
-			if (index !== -1) {
-				items.splice(index, 1);
-			}
-			$toastChannel = items;
-		}, toastTimeout);
+		newToast('red', 'Failed to remove the item from menu');
 	};
 </script>
 
