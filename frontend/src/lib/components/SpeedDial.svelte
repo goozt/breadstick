@@ -2,7 +2,7 @@
 	import { SpeedDial } from 'flowbite-svelte';
 </script>
 
-<SpeedDial trigger="click" defaultClass="speed-dial fixed right-6 bottom-6">
+<SpeedDial trigger="click" defaultClass="speed-dial fixed right-6 bottom-6 z-40">
 	<slot />
 </SpeedDial>
 
