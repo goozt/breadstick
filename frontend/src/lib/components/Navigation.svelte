@@ -2,6 +2,8 @@
 	import { DarkMode, Navbar, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
 	import { pageTracker } from '$store';
 	import type { NavMenu } from '$ui/types';
+	import { ServerStatus } from '$ui';
+	import { CartIcon } from '$icons';
 
 	export let navMenu: NavMenu[];
 	let navClass = 'bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800';
@@ -19,6 +21,10 @@
 	<slot />
 	<!-- Right Bar -->
 	<div class="flex items-center lg:order-2 text-r">
+		<ServerStatus />
+		<button class={btnClass}>
+			<CartIcon classes="w-5 h-5" />
+		</button>
 		<DarkMode {btnClass} />
 		<NavHamburger
 			on:click={toggle}

@@ -9,3 +9,4 @@ export { default as BreadcrumbItem } from './BreadcrumbItem.svelte';
 export { default as SpeedDial } from './SpeedDial.svelte';
 export { default as SpeedDialButton } from './SpeedDialButton.svelte';
 export { default as Toast } from './Toast.svelte';
+export { default as ServerStatus } from './ServerStatus.svelte';

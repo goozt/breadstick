@@ -58,7 +58,9 @@ func LoadMiddlewares(a *api.API) {
 		LimiterMiddleware: limiter.SlidingWindow{},
 	}))
 	a.Use(cors.New(cors.Config{
-		AllowMethods: "GET,POST,HEAD,PUT,DELETE,OPTIONS",
+		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,OPTIONS",
+		AllowCredentials: true,
+		AllowOrigins:     "https://breadstick.goozt.org, http://localhost:5173",
 	}))
 	a.Use(keyauth.New(keyauth.Config{
 		Validator: validateAPIKey,

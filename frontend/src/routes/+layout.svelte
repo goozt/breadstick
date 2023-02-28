@@ -9,66 +9,70 @@
 	import { toastChannel } from '$stores/Toast';
 	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
 
+	const queryClient = new QueryClient();
 	const navList = [
 		{ id: 0, name: 'Menu', url: '/menu' },
 		{ id: 1, name: 'Dashboard', url: '/dashboard' }
 	];
 </script>
 
-<main>
-	<div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
-		<header class="sticky top-0 z-40 flex-none mx-auto w-full bg-white dark:bg-gray-900 ">
-			<div class="absolute top-20 right-4">
-				{#each $toastChannel as toastItem}
-					<Toast item={toastItem} />
-				{/each}
+<QueryClientProvider client={queryClient}>
+	<main>
+		<div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
+			<header class="sticky top-0 z-40 flex-none mx-auto w-full bg-white dark:bg-gray-900 ">
+				<div class="absolute top-20 right-4">
+					{#each $toastChannel as toastItem}
+						<Toast item={toastItem} />
+					{/each}
+				</div>
+				<!-- Navigation Menu -->
+				<Navigation navMenu={navList}>
+					<!-- Left logo -->
+					<NavBrand href="/">
+						<Logo size="32" />
+						<span
+							class="transition-transform duration-500 self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-2 "
+						>
+							BreadStick
+						</span>
+					</NavBrand>
+				</Navigation>
+				<hr class="bg-gray-200 rounded border-0 dark:bg-gray-700 w-full h-px" />
+			</header>
+			<!-- Content -->
+			<div class="max-w-8xl dark:bg-gray-900">
+				{#if $pageTracker.name != 'Home'}
+					<Header heading={$pageTracker} />
+				{/if}
+				<slot />
 			</div>
-			<!-- Navigation Menu -->
-			<Navigation navMenu={navList}>
-				<!-- Left logo -->
-				<NavBrand href="/">
-					<Logo size="32" />
-					<span
-						class="transition-transform duration-500 self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-2 "
-					>
-						BreadStick
-					</span>
-				</NavBrand>
-			</Navigation>
-			<hr class="bg-gray-200 rounded border-0 dark:bg-gray-700 w-full h-px" />
-		</header>
-		<!-- Content -->
-		<div class="max-w-8xl dark:bg-gray-900">
-			{#if $pageTracker.name != 'Home'}
-				<Header heading={$pageTracker} />
-			{/if}
-			<slot />
 		</div>
-	</div>
-</main>
-<Footer
-	name="BreadStick"
-	description="We are a group of food artists and enthusiast who create baked food items for helping people who starve in the world."
->
-	<div>
-		<h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase dark:text-white">
-			HELP & SUPPORT
-		</h2>
-		<FooterLinkGroup>
-			<FooterLink liClass="mb-4" href="https://discord.gg/beadstick">Discord</FooterLink>
-			<FooterLink liClass="mb-4" href="https://github.com/goozt/beadstick/issues">GitHub</FooterLink
-			>
-		</FooterLinkGroup>
-	</div>
-	<div>
-		<h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase dark:text-white">Follow us</h2>
-		<FooterLinkGroup>
-			<FooterLink liClass="mb-4" href="https://github.com/goozt/beadstick">Gihub</FooterLink>
-			<FooterLink liClass="mb-4" href="https://discord.gg/beadstick">Discord</FooterLink>
-			<FooterLink liClass="mb-4" href="https://twitter.com/beadstick">Twitter</FooterLink>
-		</FooterLinkGroup>
-	</div>
-</Footer>
+	</main>
+	<Footer
+		name="BreadStick"
+		description="We are a group of food artists and enthusiast who create baked food items for helping people who starve in the world."
+	>
+		<div>
+			<h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase dark:text-white">
+				HELP & SUPPORT
+			</h2>
+			<FooterLinkGroup>
+				<FooterLink liClass="mb-4" href="https://discord.gg/beadstick">Discord</FooterLink>
+				<FooterLink liClass="mb-4" href="https://github.com/goozt/beadstick/issues"
+					>GitHub</FooterLink
+				>
+			</FooterLinkGroup>
+		</div>
+		<div>
+			<h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase dark:text-white">Follow us</h2>
+			<FooterLinkGroup>
+				<FooterLink liClass="mb-4" href="https://github.com/goozt/beadstick">Gihub</FooterLink>
+				<FooterLink liClass="mb-4" href="https://discord.gg/beadstick">Discord</FooterLink>
+				<FooterLink liClass="mb-4" href="https://twitter.com/beadstick">Twitter</FooterLink>
+			</FooterLinkGroup>
+		</div>
+	</Footer>
+</QueryClientProvider>
 
 <style lang="scss">
 	:global.nav-menu a {
