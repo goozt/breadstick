@@ -7,6 +7,7 @@
 	// $: active = $pageTracker == 'home';
 	import { pageTracker } from '$store';
 	import { toastChannel } from '$stores/Toast';
+	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
 
 	const navList = [
 		{ id: 0, name: 'Menu', url: '/menu' },

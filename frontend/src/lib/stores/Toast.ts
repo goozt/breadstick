@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { newUUID } from '$lib/tools';
 import { writable } from 'svelte/store';
 import type { ToastItem, ToastItemType } from '$ui-types';
 export const toastChannel = writable([] as ToastItem[]);
@@ -7,7 +7,7 @@ const toastTimeout = 4000;
 export const newToast = (toastType: ToastItemType, toastMessage: string) => {
 	toastChannel.update((toasts) => {
 		const toast = {
-			id: uuidv4(),
+			id: newUUID(),
 			type: toastType,
 			message: toastMessage
 		};
