@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Footer, FooterBrand, FooterCopyright } from 'flowbite-svelte';
-	export let name: string = 'MyRestaurant',
-		description: string = 'This is a restaurant';
+	export let name = 'MyRestaurant',
+		description = 'This is a restaurant';
 </script>
 
 <Footer

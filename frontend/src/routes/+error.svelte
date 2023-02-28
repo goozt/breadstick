@@ -1,15 +1,15 @@
 <script lang="ts">
-	// @ts-nocheck
 	import { page } from '$app/stores';
 	import { ErrorPage } from '$ui/error';
 	import { Button } from 'flowbite-svelte';
 	let error = $page.error;
 	let msg: string;
-	$: msg = error != null ? error.message : "Something's missing";
-	$: description =
-		error.message != 'Not Found'
+	$: msg = error ? error.message : "Something's missing";
+	$: description = error
+		? error.message != 'Not Found'
 			? 'Something went wrong at our side. Please try again later.'
-			: "Sorry, we can't find that page. You'll find lots to explore on the home page.";
+			: "Sorry, we can't find that page. You'll find lots to explore on the home page."
+		: "Sorry, we can't find that page. You'll find lots to explore on the home page.";
 </script>
 
 <div class="flex items-center justify-center h-screen">

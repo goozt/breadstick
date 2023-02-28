@@ -1,5 +1,6 @@
 <script lang="ts">
 	import classNames from 'classnames';
+	import type { ThemeClass } from './Button';
 	export let href: string | undefined = undefined;
 	export let id: string | undefined = undefined;
 

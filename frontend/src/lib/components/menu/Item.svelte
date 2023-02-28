@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Button } from '$ui';
 	export let id: string | undefined = undefined,
-		name: string = 'Apple',
-		price: number = 999,
-		image: string = '';
+		name = 'Apple',
+		price = 999,
+		image = '';
 	$: price.toFixed(2);
 </script>
 

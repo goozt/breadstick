@@ -9,7 +9,7 @@ type Actions = {
 	focus: string;
 };
 
-type ThemeClass = {
+export type ThemeClass = {
 	light: Actions;
 	dark: Actions;
 };

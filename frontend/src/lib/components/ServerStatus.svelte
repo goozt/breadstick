@@ -19,7 +19,7 @@
 			}
 		})
 			.then((res) => res.json())
-			.catch((_e) => {
+			.catch(() => {
 				return { status: 'error' };
 			});
 	};
