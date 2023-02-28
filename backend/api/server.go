@@ -13,7 +13,7 @@ import (
 )
 
 type API struct {
-	app         *fiber.App
+	App         *fiber.App
 	cleanupFunc func() error
 	Router      fiber.Router
 }
@@ -33,7 +33,7 @@ func NewServer(name, prefix string, config ...fiber.Config) *API {
 	prefixedRouter := app.Group(prefix)
 
 	return &API{
-		app: app,
+		App: app,
 		cleanupFunc: func() error {
 			fmt.Println("\rServer stopped")
 			return nil
@@ -56,7 +56,7 @@ func (api *API) Listen() {
 
 	// Hook Cleanup function
 	if api.cleanupFunc != nil {
-		api.app.Hooks().OnShutdown(api.cleanupFunc)
+		api.App.Hooks().OnShutdown(api.cleanupFunc)
 	}
 
 	// Listen to interrupts with context
@@ -71,13 +71,13 @@ func (api *API) Listen() {
 
 	// Run listener
 	g.Go(func() error {
-		return api.app.Listen(":" + port)
+		return api.App.Listen(":" + port)
 	})
 
 	// Shutdown gracefully
 	g.Go(func() error {
 		<-gCtx.Done()
-		return api.app.ShutdownWithTimeout(api.app.Config().ReadTimeout)
+		return api.App.ShutdownWithTimeout(api.App.Config().ReadTimeout)
 	})
 
 	// Wait for all goroutines to finish
@@ -89,5 +89,5 @@ func (api *API) Listen() {
 
 // Add middlewares
 func (api *API) Use(middleware func(*fiber.Ctx) error) {
-	api.app.Use(middleware)
+	api.App.Use(middleware)
 }

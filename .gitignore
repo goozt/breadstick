@@ -19,3 +19,4 @@ backend/database
 # Go workspace file
 go.work
 **/serve
+**/.env
