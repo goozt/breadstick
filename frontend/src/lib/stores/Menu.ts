@@ -1,4 +1,4 @@
-import { newUUID } from '$lib/tools';
+import { newUUID } from '$services/uuid';
 import { writable } from 'svelte/store';
 import { defaultItems } from '$data/MenuItems';
 import type { MenuItem } from '$ui-types';

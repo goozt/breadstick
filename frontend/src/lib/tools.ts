@@ -1,7 +1,3 @@
-import { v4 } from 'uuid';
-
-export const newUUID = (): string => v4();
-
 const server = import.meta.env.VITE_API_SERVER ?? 'https://breadstick-api.goozt.org';
 
 export const api = {

@@ -1,5 +1,5 @@
 import type { MenuItem } from '$ui-types';
-import { newUUID } from '$lib/tools';
+import { newUUID } from '$services/uuid';
 
 export const defaultItems: MenuItem[] = [
 	{

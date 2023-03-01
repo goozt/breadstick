@@ -15,6 +15,7 @@ const config = {
 
 	kit: {
 		alias: {
+			$services: './src/lib/services/*',
 			$store: './src/lib/stores.js',
 			$stores: './src/lib/stores/*',
 			$data: './src/lib/data',

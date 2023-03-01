@@ -3,7 +3,6 @@
 	import { NavBrand, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
 	import { Logo } from '$icons';
 	import { Navigation, Header, Footer, Toast } from '$ui';
-	// import { pageTracker } from '$lib/stores.js';
 	// $: active = $pageTracker == 'home';
 	import { pageTracker } from '$store';
 	import { toastChannel } from '$stores/Toast';

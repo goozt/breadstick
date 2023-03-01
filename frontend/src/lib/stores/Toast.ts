@@ -1,4 +1,4 @@
-import { newUUID } from '$lib/tools';
+import { newUUID } from '$services/uuid';
 import { writable } from 'svelte/store';
 import type { ToastItem, ToastItemType } from '$ui-types';
 export const toastChannel = writable([] as ToastItem[]);
