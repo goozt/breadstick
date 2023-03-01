@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Tooltip } from 'flowbite-svelte';
-	import { useQuery, type UseQueryStoreResult } from '@sveltestack/svelte-query';
+	import { useQuery } from '@sveltestack/svelte-query';
 	import { api } from '$lib/tools';
 	import { fetchHealth } from '$lib/services/health';
 	import { browser } from '$app/environment';
