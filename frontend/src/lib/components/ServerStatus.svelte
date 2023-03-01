@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Tooltip } from 'flowbite-svelte';
-	import { useQuery } from '@sveltestack/svelte-query';
+	import { useQuery, type UseQueryStoreResult } from '@sveltestack/svelte-query';
 	import { api } from '$lib/tools';
+	import { fetchHealth } from '$lib/services/health';
+	import { browser } from '$app/environment';
 
 	type Query = {
 		data: {
@@ -9,25 +11,9 @@
 		};
 	};
 
-	const fetchHealth = async () => {
-		return fetch(api.server + '/health', {
-			mode: 'cors',
-			headers: {
-				Accept: 'application/json',
-				Authorization: 'Bearer ' + api.token,
-				'Access-Control-Allow-Origin': '*'
-			}
-		})
-			.then((res) => res.json())
-			.catch(() => {
-				return { status: 'error' };
-			});
-	};
-
 	const result = useQuery<Query>('status', fetchHealth, {
-		enabled: api.token != undefined && api.server != undefined,
-		refetchInterval: 5000,
-		refetchIntervalInBackground: true
+		enabled: browser && api.token != undefined && api.server != undefined,
+		initialData: { data: { status: 'failed' } }
 	});
 
 	$: status = $result.isSuccess && $result.data.data.status == 'ok' && $result.failureCount == 0;
