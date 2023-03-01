@@ -45,8 +45,22 @@ npm run start
 
 ### Backend
 
+#### Manual Deployment
+
 ```bash
 cd backend
-go build -o server .
-PORT=4000 ./serve
+go build -o breadstick .
+
+./serve -t # Print the api token environment variable
+
+PORT=4000 VITE_API_TOKEN=api_token ./breadstick
+```
+
+#### Docker Deployment
+
+```bash
+cd backend
+cp ../sample.env ./.env # Edit api token in .env
+docker build -t breadstick-app .
+docker run -it -d -p 3000:3000 breadstick-app
 ```

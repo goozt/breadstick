@@ -8,6 +8,8 @@ import (
 )
 
 func main() {
+	TokenCmd()
+	apiKey = LoadKey()
 	server := api.NewServer("Restaurant API v1", "/api/v1")
 	LoadMiddlewares(server)
 	RegisterHandlers(server)

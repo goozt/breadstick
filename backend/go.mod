@@ -5,9 +5,11 @@ go 1.20
 require (
 	github.com/go-playground/validator/v10 v10.11.2
 	github.com/gofiber/fiber/v2 v2.42.0
+	github.com/gofiber/keyauth/v2 v2.1.32
 	github.com/gofiber/storage/bbolt v1.3.4
 	github.com/gofiber/utils v1.0.1
 	github.com/google/uuid v1.3.0
+	github.com/joho/godotenv v1.5.1
 	go.etcd.io/bbolt v1.3.7
 	golang.org/x/sync v0.1.0
 )
@@ -16,8 +18,6 @@ require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/gofiber/keyauth/v2 v2.1.32 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/klauspost/compress v1.16.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
