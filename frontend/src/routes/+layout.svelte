@@ -3,16 +3,13 @@
 	import { NavBrand, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
 	import { Logo } from '$icons';
 	import { Navigation, Header, Footer, Toast } from '$ui';
-	// $: active = $pageTracker == 'home';
-	import { pageTracker } from '$stores/navigation';
 	import { toastChannel } from '$stores/toast';
 	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
+	import { page } from '$app/stores';
 
 	const queryClient = new QueryClient();
-	const navList = [
-		{ id: 0, name: 'Menu', url: '/menu' },
-		{ id: 1, name: 'Dashboard', url: '/dashboard' }
-	];
+	const navList = ['/menu', '/dashboard'];
+	$: currentPage = $page.url.pathname;
 </script>
 
 <QueryClientProvider client={queryClient}>
@@ -25,12 +22,13 @@
 					{/each}
 				</div>
 				<!-- Navigation Menu -->
-				<Navigation navMenu={navList}>
+				<Navigation navMenu={navList} bind:page={currentPage}>
 					<!-- Left logo -->
 					<NavBrand href="/">
 						<Logo size="32" />
 						<span
-							class="transition-transform duration-500 self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-2 "
+							class="transition-transform self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-2"
+							class:scale-105={currentPage == '/'}
 						>
 							BreadStick
 						</span>
@@ -40,8 +38,8 @@
 			</header>
 			<!-- Content -->
 			<div class="max-w-8xl dark:bg-gray-900">
-				{#if $pageTracker.name != 'Home'}
-					<Header heading={$pageTracker} />
+				{#if currentPage != '/'}
+					<Header page={currentPage} />
 				{/if}
 				<slot />
 			</div>

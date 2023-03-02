@@ -1,8 +1,3 @@
-<script lang="ts">
-	import { pageTracker } from '$stores/navigation';
-	$pageTracker = { name: 'Home', url: '/' };
-</script>
-
 <div class="relative overflow-hidden" style="padding-bottom: 16rem;">
 	<div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
 		<div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">

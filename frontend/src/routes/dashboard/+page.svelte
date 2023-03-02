@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { pageTracker } from '$stores/navigation';
 	import { addMenuItem, removeMenuItem, itemCollection } from '$stores/menu';
 	import { Grid, Item } from '$ui/menu';
 	import { SpeedDial, SpeedDialButton } from '$ui';
-	$pageTracker = { name: 'Dashboard', url: 'dashboard' };
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">

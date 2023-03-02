@@ -2,6 +2,7 @@
 	import { BreadcrumbItem } from '$ui';
 	import { Breadcrumb } from 'flowbite-svelte';
 	import type { BreadcrumbType } from './Breadcrumb';
+
 	export let path: string;
 	let crumbs: BreadcrumbType[];
 	$: {

@@ -10,11 +10,6 @@ export declare type MenuItem = {
 	imageurl: string;
 };
 
-export declare type NavMenu = {
-	name: string;
-	url: string;
-};
-
 export declare type ToastItem = {
 	id: string;
 	type: ToastItemType;

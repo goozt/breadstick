@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Tabs, TabItem, Timeline, TimelineItem, Button } from 'flowbite-svelte';
-	import { pageTracker } from '$stores/navigation';
-	$pageTracker = { name: 'Settings', url: '/dashboard/settings' };
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">

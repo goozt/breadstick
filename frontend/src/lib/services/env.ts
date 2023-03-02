@@ -9,5 +9,5 @@ type Environment = {
 export const env: Environment = {
 	token: import.meta.env.VITE_API_TOKEN,
 	server: server,
-	api: server + (import.meta.env.VITE_API_PATH ?? '/api/v1/')
+	api: server + (import.meta.env.VITE_API_PATH ?? '/api/v1')
 };

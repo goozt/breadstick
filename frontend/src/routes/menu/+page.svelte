@@ -1,12 +1,9 @@
 <script lang="ts">
 	import { ImageSlider } from '$ui';
-	import { pageTracker } from '$stores/navigation';
 	import { itemCollection } from '$stores/menu';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
 	import { images } from '$data/SliderImages';
-
-	$pageTracker = { name: 'Menu', url: '/menu' };
 
 	export const callback = (event: Event) => {
 		const e = event.target as Element;
