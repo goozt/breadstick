@@ -7,8 +7,7 @@ import (
 // JSON response
 func SendJSON[T any](c *fiber.Ctx, data T) error {
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "success",
-		"data":    data,
+		"data": data,
 	})
 }
 
@@ -18,11 +17,13 @@ func SendError(c *fiber.Ctx, status int, errorData ...error) error {
 	for _, err := range errorData {
 		errs = append(errs, err.Error())
 	}
-
+	err := fiber.NewError(status)
 	return c.Status(status).JSON(fiber.Map{
-		"message": "error",
-		"error":   fiber.NewError(status),
-		"details": errs,
+		"error": fiber.Map{
+			"code":    err.Code,
+			"message": err.Message,
+			"details": errs,
+		},
 	})
 }
 

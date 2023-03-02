@@ -28,7 +28,7 @@ func LoadMiddlewares(a *api.API) {
 	a.Use(cors.New(cors.Config{
 		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,OPTIONS",
 		AllowCredentials: true,
-		AllowOrigins:     "https://breadstick.goozt.org, http://localhost:5173",
+		AllowOrigins:     "https://breadstick.goozt.org, http://localhost:5173, http://localhost:4173",
 	}))
 	a.Use(keyauth.New(keyauth.Config{
 		Validator: validateAPIKey,
