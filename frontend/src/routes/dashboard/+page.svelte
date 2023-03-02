@@ -1,25 +1,44 @@
 <script lang="ts">
-	import { addMenuItem, removeMenuItem, itemCollection } from '$stores/menu';
-	import { Grid, Item } from '$ui/menu';
+	import { Label, Input } from 'flowbite-svelte';
+	import { Grid, Item, NewItemModal } from '$ui/menu';
 	import { SpeedDial, SpeedDialButton } from '$ui';
+	import menuAPI from '$api/menu';
+
+	let openCreator = false;
+	let menu = menuAPI.list();
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">
-	<Grid>
-		{#each $itemCollection as item}
-			<Item
-				id={String(item.id)}
-				name={item.name}
-				price={item.price}
-				image={item.imageurl}
-				on:click={removeMenuItem}>Remove</Item
-			>
-		{/each}
-	</Grid>
+	{#if $menu.isLoading}
+		<p class="text-2xl dark:text-white text-center mt-16">Loading...</p>
+	{:else if $menu.isError}
+		<p class="text-2xl dark:text-white text-center mt-16">
+			Sorry, we are unable to load your menu at the moment.
+		</p>
+	{:else if $menu.isSuccess}
+		{#if $menu.data.data}
+			{#if $menu.data.data?.items.length > 0}
+				<Grid>
+					{#each $menu.data.data.items as item}
+						<Item id={item.id} name={item.name} price={item.price} image="/images/image1.jpg"
+							>Remove</Item
+						>
+					{/each}
+				</Grid>
+			{:else}
+				<p class="text-2xl dark:text-white text-center mt-16">Your menu is empty!</p>
+			{/if}
+		{/if}
+	{/if}
 </div>
 
 <SpeedDial>
-	<SpeedDialButton name="Add&nbsp;Menu&nbsp;Item" on:click={addMenuItem}>
+	<SpeedDialButton
+		name="Add&nbsp;Menu&nbsp;Item"
+		on:click={() => {
+			openCreator = true;
+		}}
+	>
 		<svg
 			width="75%"
 			height="75%"
@@ -55,3 +74,18 @@
 		</svg>
 	</SpeedDialButton>
 </SpeedDial>
+
+<NewItemModal bind:open={openCreator}>
+	<Label class="space-y-2">
+		<span>Name</span>
+		<Input type="text" name="name" placeholder="Vanilla Ice Cream" required />
+	</Label>
+	<Label class="space-y-2">
+		<span>Price</span>
+		<Input type="number" name="price" placeholder="10.50" required />
+	</Label>
+	<Label class="space-y-2">
+		<span>Category</span>
+		<Input type="text" name="category" placeholder="Dessert" required />
+	</Label>
+</NewItemModal>

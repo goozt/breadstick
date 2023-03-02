@@ -1,15 +1,15 @@
-type Colors = {
+interface Colors {
 	text: string;
 	bg: string;
-};
+}
 
-type Actions = {
+interface Actions {
 	normal: Colors;
 	hover: Colors;
 	focus: string;
-};
+}
 
-export type ThemeClass = {
+export interface ThemeClass {
 	light: Actions;
 	dark: Actions;
-};
+}

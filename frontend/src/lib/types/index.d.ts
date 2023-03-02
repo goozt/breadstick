@@ -3,13 +3,6 @@ export declare type ImageType = {
 	imgurl: string;
 };
 
-export declare type MenuItem = {
-	id: string;
-	name: string;
-	price: number;
-	imageurl: string;
-};
-
 export declare type ToastItem = {
 	id: string;
 	type: ToastItemType;

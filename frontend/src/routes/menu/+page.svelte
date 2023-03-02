@@ -1,27 +1,30 @@
 <script lang="ts">
 	import { ImageSlider } from '$ui';
-	import { itemCollection } from '$stores/menu';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
 	import { images } from '$data/SliderImages';
+	import menuAPI from '$api/menu';
 
 	export const callback = (event: Event) => {
 		const e = event.target as Element;
 		console.log(e.getAttribute('data-id'));
 		return false;
 	};
+	let menu = menuAPI.list();
+
+	$: menuItems = $menu.isSuccess ? $menu.data.data?.items ?? [] : [];
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">
 	<ImageSlider {images} />
 
 	<Grid paddingYClass="py-16 sm:py-20">
-		{#each $itemCollection as item}
+		{#each menuItems as item}
 			<Item
 				id={String(item.id)}
 				name={item.name}
 				price={item.price}
-				image={item.imageurl}
+				image="/images/image1.jpg"
 				on:click={callback}
 			>
 				<CartIcon /> Add to Cart

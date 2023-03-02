@@ -1,4 +1,4 @@
-type SpeedDialItem = {
+interface SpeedDialItem {
 	name: string;
 	bg: string;
-};
+}

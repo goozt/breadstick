@@ -4,10 +4,10 @@
 	import { Logo } from '$icons';
 	import { Navigation, Header, Footer, Toast } from '$ui';
 	import { toastChannel } from '$stores/toast';
-	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
+	import { QueryClientProvider } from '@sveltestack/svelte-query';
+	import { queryClient } from '$services/api';
 	import { page } from '$app/stores';
 
-	const queryClient = new QueryClient();
 	const navList = ['/menu', '/dashboard'];
 	$: currentPage = $page.url.pathname;
 </script>

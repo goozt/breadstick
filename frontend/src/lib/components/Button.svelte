@@ -3,6 +3,7 @@
 	import type { ThemeClass } from './Button';
 	export let href: string | undefined = undefined;
 	export let id: string | undefined = undefined;
+	export let type = 'button';
 
 	const theme: ThemeClass = {
 		light: {
@@ -47,9 +48,22 @@
 
 	const decorations =
 		'transition-colors cursor-pointer text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm rounded-full';
-	$: classes = classNames(decorations, compile(theme));
+	$: classes = classNames(decorations, compile(theme), $$props.class);
 </script>
 
-<a type="button" data-id={id} class={classes} {href} on:click>
+<svelte:element
+	this={href ? 'a' : 'button'}
+	type={href ? undefined : type}
+	data-id={href ? undefined : id}
+	{href}
+	{...$$restProps}
+	class={classes}
+	on:click
+	on:change
+	on:keydown
+	on:keyup
+	on:mouseenter
+	on:mouseleave
+>
 	<slot />
-</a>
+</svelte:element>
