@@ -1,4 +1,4 @@
-import type { MenuItem } from '$ui-types';
+import type { MenuItem } from '$types';
 import { newUUID } from '$services/uuid';
 
 export const defaultItems: MenuItem[] = [

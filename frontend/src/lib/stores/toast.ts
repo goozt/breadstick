@@ -1,6 +1,6 @@
 import { newUUID } from '$services/uuid';
 import { writable } from 'svelte/store';
-import type { ToastItem, ToastItemType } from '$ui-types';
+import type { ToastItem, ToastItemType } from '$types';
 export const toastChannel = writable([] as ToastItem[]);
 const toastTimeout = 4000;
 

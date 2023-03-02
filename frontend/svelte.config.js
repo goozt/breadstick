@@ -15,17 +15,14 @@ const config = {
 
 	kit: {
 		alias: {
+			$api: './src/lib/api/*',
 			$services: './src/lib/services/*',
-			$store: './src/lib/stores.js',
 			$stores: './src/lib/stores/*',
-			$data: './src/lib/data',
-			'$data/*': './src/lib/data/*',
+			$data: './src/lib/data/*',
 			$ui: './src/lib/components',
 			'$ui/*': './src/lib/components/*',
-			'$ui-types': './src/lib/components/types',
-			'$ui-types/*': './src/lib/components/types/*',
-			$icons: './src/lib/icons',
-			'$icons/*': './src/lib/icons/*'
+			$types: './src/lib/types',
+			$icons: './src/lib/icons'
 		},
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.

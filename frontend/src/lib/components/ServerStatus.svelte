@@ -1,22 +1,10 @@
 <script lang="ts">
 	import { Tooltip } from 'flowbite-svelte';
-	import { useQuery } from '@sveltestack/svelte-query';
-	import { api } from '$lib/tools';
-	import { fetchHealth } from '$lib/services/health';
-	import { browser } from '$app/environment';
+	import healthAPI from '$api/health';
 
-	type Query = {
-		data: {
-			status: string;
-		};
-	};
+	let health = healthAPI();
 
-	const result = useQuery<Query>('status', fetchHealth, {
-		enabled: browser && api.token != undefined && api.server != undefined,
-		initialData: { data: { status: 'failed' } }
-	});
-
-	$: status = $result.isSuccess && $result.data.data.status == 'ok' && $result.failureCount == 0;
+	$: status = $health.isSuccess && $health.data.data.status == 'ok' && $health.failureCount == 0;
 </script>
 
 <span

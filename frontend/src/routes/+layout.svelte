@@ -4,8 +4,8 @@
 	import { Logo } from '$icons';
 	import { Navigation, Header, Footer, Toast } from '$ui';
 	// $: active = $pageTracker == 'home';
-	import { pageTracker } from '$store';
-	import { toastChannel } from '$stores/Toast';
+	import { pageTracker } from '$stores/navigation';
+	import { toastChannel } from '$stores/toast';
 	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
 
 	const queryClient = new QueryClient();

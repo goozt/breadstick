@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { pageTracker } from '$store';
-	import { addMenuItem, removeMenuItem, itemCollection } from '$stores/Menu';
+	import { pageTracker } from '$stores/navigation';
+	import { addMenuItem, removeMenuItem, itemCollection } from '$stores/menu';
 	import { Grid, Item } from '$ui/menu';
 	import { SpeedDial, SpeedDialButton } from '$ui';
 	$pageTracker = { name: 'Dashboard', url: 'dashboard' };

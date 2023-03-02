@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Heading } from 'flowbite-svelte';
-	import type { NavMenu } from '$ui-types';
+	import type { NavMenu } from '$types';
 	import { Breadcrumb } from '$ui';
 	import { page } from '$app/stores';
 	export let heading: NavMenu;

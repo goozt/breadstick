@@ -1,4 +1,4 @@
-import type { ImageType } from '$ui-types';
+import type { ImageType } from '$types';
 
 export const images: ImageType[] = [
 	{

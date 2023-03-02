@@ -6,6 +6,11 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface Platform {}
+		interface ImportMetaEnv {
+			VITE_API_TOKEN: string;
+			VITE_API_SERVER: string;
+			VITE_API_PATH: string;
+		}
 	}
 }
 

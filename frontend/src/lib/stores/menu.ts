@@ -1,8 +1,8 @@
 import { newUUID } from '$services/uuid';
 import { writable } from 'svelte/store';
 import { defaultItems } from '$data/MenuItems';
-import type { MenuItem } from '$ui-types';
-import { newToast } from '$stores/Toast';
+import type { MenuItem } from '$types';
+import { newToast } from '$stores/toast';
 
 export const itemCollection = writable(defaultItems as MenuItem[]);
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DarkMode, Navbar, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
-	import { pageTracker } from '$store';
-	import type { NavMenu } from '$ui/types';
+	import { pageTracker } from '$stores/navigation';
+	import type { NavMenu } from '$types';
 	import { ServerStatus } from '$ui';
 	import { CartIcon } from '$icons';
 

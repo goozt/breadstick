@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pageTracker } from '$store';
+	import { pageTracker } from '$stores/navigation';
 	$pageTracker = { name: 'Home', url: '/' };
 </script>
 

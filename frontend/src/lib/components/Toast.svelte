@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Toast } from 'flowbite-svelte';
-	import type { ToastItem } from '$ui-types';
+	import type { ToastItem } from '$types';
 	export let item: ToastItem;
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Carousel } from 'flowbite-svelte';
-	import type { ImageType } from '$ui-types';
+	import type { ImageType } from '$types';
 
 	export let images: ImageType[];
 

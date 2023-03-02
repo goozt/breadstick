@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Tabs, TabItem, Timeline, TimelineItem, Button } from 'flowbite-svelte';
-	import { pageTracker } from '$store';
+	import { pageTracker } from '$stores/navigation';
 	$pageTracker = { name: 'Settings', url: '/dashboard/settings' };
 </script>
 
