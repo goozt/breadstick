@@ -4,7 +4,7 @@
 
 	let health = healthAPI();
 
-	$: status = $health.isSuccess && $health.data.data.status == 'ok' && $health.failureCount == 0;
+	$: status = $health.isSuccess && $health.data.data?.status == 'ok';
 </script>
 
 <span

@@ -9,9 +9,7 @@ type QueryType = {
 };
 
 const fetchData = async () => {
-	return fetchServerData('/health').catch(() => {
-		return { status: 'error' };
-	});
+	return fetchServerData('GET', '/health');
 };
 
 export default () => {
