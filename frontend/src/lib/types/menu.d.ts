@@ -5,6 +5,12 @@ export interface Item {
 	price: number;
 }
 
+export interface EditableItem {
+	name?: string;
+	category?: string;
+	price?: number;
+}
+
 interface ErrorResult {
 	error?: {
 		code: number;
@@ -19,6 +25,22 @@ export interface MenuResult extends ErrorResult {
 	};
 }
 
+export interface ItemResult extends ErrorResult {
+	data?: Item;
+}
+
 export interface CreateResult extends ErrorResult {
 	data?: Item;
+}
+
+export interface DeleteResult extends ErrorResult {
+	data?: {
+		deleted_item: string;
+	};
+}
+
+export interface DeleteMenuResult extends ErrorResult {
+	data?: {
+		detelted_menu: boolean;
+	};
 }
