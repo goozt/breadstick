@@ -2,6 +2,12 @@
 
 FROM golang:1.20-alpine AS build
 
+ARG PORT=3000
+ENV PORT=$PORT
+
+ARG TOKEN
+ENV API_TOKEN=$TOKEN
+
 WORKDIR /app
 
 COPY go.mod ./

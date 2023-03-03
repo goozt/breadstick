@@ -54,7 +54,7 @@ func GenerateSecureToken(length ...int) string {
 
 func LoadKey() string {
 	godotenv.Load()
-	if apiToken, exists := os.LookupEnv("VITE_API_TOKEN"); exists {
+	if apiToken, exists := os.LookupEnv("API_TOKEN"); exists {
 		return apiToken
 	}
 	log.Fatal("API token not found")
