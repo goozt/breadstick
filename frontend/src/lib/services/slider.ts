@@ -1,6 +1,6 @@
 import type { ImageType } from '$types';
 
-export const images: ImageType[] = [
+export const sliderImages: ImageType[] = [
 	{
 		name: 'Itme 1',
 		imgurl: '/images/image1.jpg'

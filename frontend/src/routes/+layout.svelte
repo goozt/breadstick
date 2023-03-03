@@ -3,7 +3,7 @@
 	import { NavBrand, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
 	import { Logo } from '$icons';
 	import { Navigation, Header, Footer, Toast } from '$ui';
-	import { toastChannel } from '$stores/toast';
+	import { toastChannel } from '$services/toast';
 	import { QueryClientProvider } from '@sveltestack/svelte-query';
 	import { queryClient } from '$services/api';
 	import { page } from '$app/stores';

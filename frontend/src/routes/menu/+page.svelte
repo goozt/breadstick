@@ -2,7 +2,7 @@
 	import { ImageSlider } from '$ui';
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
-	import { images } from '$data/SliderImages';
+	import { sliderImages } from '$services/slider';
 	import menuAPI from '$api/menu';
 
 	export const callback = (event: Event) => {
@@ -16,7 +16,7 @@
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">
-	<ImageSlider {images} />
+	<ImageSlider images={sliderImages} />
 
 	<Grid paddingYClass="py-16 sm:py-20">
 		{#each menuItems as item}

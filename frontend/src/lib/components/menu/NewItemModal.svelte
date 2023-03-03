@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Modal, Helper } from 'flowbite-svelte';
 	import { Button } from '$ui';
-	import { newToast } from '$stores/toast';
+	import { newToast } from '$services/toast';
 	import { queryClient } from '$services/api';
 	import menuAPI from '$api/menu';
 	import type { Item, MenuResult } from '$api/menu.d';
