@@ -1,33 +1,30 @@
 import { useQuery, useMutation } from '@sveltestack/svelte-query';
 import { queryConfig } from '$services/api';
 import { fetchAPIv1 } from '$services/fetch';
-import type { Item, MenuResult, CreateResult } from '$types/menu';
+import type {
+	Item,
+	MenuResult,
+	CreateResult,
+} from '$types/menu';
 
-const getMenu = async () => {
-	return fetchAPIv1('GET', '/menu');
+//  Get menu items
+
+export const getMenu = () => {
+	return useQuery<MenuResult>('menu', () => fetchAPIv1('GET', '/menu'), queryConfig);
 };
 
-const createItem = async (newItem: Item): Promise<CreateResult> => {
-	return fetchAPIv1('POST', '/menu', newItem);
+// Create new menu items
+
+export const createItem = () => {
+	return useMutation(
+		async (newItem: Item): Promise<CreateResult> => fetchAPIv1('POST', '/menu', newItem)
+	);
 };
 
-const parseFormData = (data: FormData, key: string): string => {
-	return data.has(key) ? data.get(key)?.toString() ?? '' : '';
 };
 
-export default {
-	getFormData: (formData: FormData): Item => {
-		const item: Item = {
-			name: parseFormData(formData, 'name'),
-			category: parseFormData(formData, 'category'),
-			price: parseFloat(parseFormData(formData, 'price'))
-		};
-		return item;
-	},
-	list: () => {
-		return useQuery<MenuResult>('menu', getMenu, queryConfig);
-	},
-	create: () => {
-		return useMutation(createItem);
-	}
+};
+
+};
+
 };

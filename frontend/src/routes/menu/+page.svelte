@@ -3,14 +3,14 @@
 	import { Grid, Item } from '$ui/menu';
 	import { CartIcon } from '$icons';
 	import { sliderImages } from '$services/slider';
-	import menuAPI from '$api/menu';
+	import { getMenu } from '$api/menu';
 
 	export const callback = (event: Event) => {
 		const e = event.target as Element;
 		console.log(e.getAttribute('data-id'));
 		return false;
 	};
-	let menu = menuAPI.list();
+	let menu = getMenu();
 
 	$: menuItems = $menu.isSuccess ? $menu.data.data?.items ?? [] : [];
 </script>

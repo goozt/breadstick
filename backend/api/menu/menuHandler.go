@@ -33,8 +33,6 @@ func DeleteMenu(c *fiber.Ctx) error {
 	}
 
 	return utils.SendJSON(c, fiber.Map{
-		"operation": "reset",
-		"store":     menuDB.Name,
-		"sucess":    true,
+		"deleted_menu": true,
 	})
 }

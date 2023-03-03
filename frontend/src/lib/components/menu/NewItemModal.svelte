@@ -3,12 +3,13 @@
 	import { Button } from '$ui';
 	import { newToast } from '$services/toast';
 	import { queryClient } from '$services/api';
-	import menuAPI from '$api/menu';
+	import { createItem } from '$api/menu';
 	import type { Item, MenuResult } from '$types/menu';
+	import { getFormData } from '$services/form';
 
 	export let open = false;
 
-	const mutation = menuAPI.create();
+	const mutation = createItem();
 
 	const appendItemtoMenu = async (item: Item) => {
 		await queryClient.cancelQueries(['menu']);
@@ -27,7 +28,7 @@
 	const onSubmitAction = (event: Event) => {
 		const formData = new FormData(event.target as HTMLFormElement);
 		try {
-			const data = menuAPI.getFormData(formData);
+			const data = getFormData(formData);
 			$mutation.mutate(data, {
 				onSuccess: (data) => {
 					if (data) {

@@ -2,10 +2,10 @@
 	import { Label, Input } from 'flowbite-svelte';
 	import { Grid, Item, NewItemModal } from '$ui/menu';
 	import { SpeedDial, SpeedDialButton } from '$ui';
-	import menuAPI from '$api/menu';
+	import { getMenu } from '$api/menu';
 
 	let openCreator = false;
-	let menu = menuAPI.list();
+	let menu = getMenu();
 </script>
 
 <div class="md:container md:mx-auto py-16 px-4">
