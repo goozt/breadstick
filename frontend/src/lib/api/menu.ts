@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from '@sveltestack/svelte-query';
 import { queryConfig } from '$services/api';
 import { fetchAPIv1 } from '$services/fetch';
-import type { Item, MenuResult, CreateResult } from './menu.d';
+import type { Item, MenuResult, CreateResult } from '$types/menu';
 
 const getMenu = async () => {
 	return fetchAPIv1('GET', '/menu');
