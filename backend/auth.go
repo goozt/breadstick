@@ -16,14 +16,11 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var (
-	apiKey          string
-	DEFAULT_ENTROPY = 32
-)
+var DEFAULT_ENTROPY = 32
 
 func validateAPIKey(c *fiber.Ctx, key string) (bool, error) {
-	if apiKey != "" {
-		hashedAPIKey := sha256.Sum256([]byte(apiKey))
+	if config.APIKey != "" {
+		hashedAPIKey := sha256.Sum256([]byte(config.APIKey))
 		hashedKey := sha256.Sum256([]byte(key))
 
 		if subtle.ConstantTimeCompare(hashedAPIKey[:], hashedKey[:]) == 1 {

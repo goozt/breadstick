@@ -1,8 +1,6 @@
 package main
 
 import (
-	"time"
-
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/idempotency"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
@@ -18,17 +16,18 @@ func LoadMiddlewares(a *api.API) {
 	a.Use(idempotency.New())
 	a.Use(requestid.New())
 	a.Use(recover.New())
-	a.Use(logger.New())
+	if config.Debug {
+		a.Use(logger.New())
+	}
 	a.Use(pprof.New())
 	a.Use(limiter.New(limiter.Config{
 		Max:               20,
-		Expiration:        30 * time.Second,
+		Expiration:        config.CacheTimeout,
 		LimiterMiddleware: limiter.SlidingWindow{},
 	}))
 	a.Use(cors.New(cors.Config{
-		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,OPTIONS",
-		AllowCredentials: true,
-		AllowOrigins:     "https://breadstick.goozt.org, http://localhost:5173, http://localhost:4173",
+		AllowMethods: "GET,POST,HEAD,PUT,DELETE,OPTIONS",
+		AllowOrigins: config.AllowedHosts,
 	}))
 	a.Use(keyauth.New(keyauth.Config{
 		Validator: validateAPIKey,

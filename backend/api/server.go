@@ -18,19 +18,28 @@ type API struct {
 	Router      fiber.Router
 }
 
+type Config struct {
+	AppName      string
+	APIKey       string
+	APIPrefix    string
+	AllowedHosts string
+	Debug        bool
+	CacheTimeout time.Duration
+}
+
 // Create new API server
-func NewServer(name, prefix string, config ...fiber.Config) *API {
+func NewServer(config Config, fiberConfig ...fiber.Config) *API {
 
 	var newConfig fiber.Config
 	newConfig.ReadTimeout = 10 * time.Second
 
-	if len(config) > 0 {
-		newConfig = config[0]
+	if len(fiberConfig) > 0 {
+		newConfig = fiberConfig[0]
 	}
 
-	newConfig.AppName = name
+	newConfig.AppName = config.AppName
 	app := fiber.New(newConfig)
-	prefixedRouter := app.Group(prefix)
+	prefixedRouter := app.Group(config.APIPrefix)
 
 	return &API{
 		App: app,
