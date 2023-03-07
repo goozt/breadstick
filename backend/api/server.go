@@ -20,7 +20,6 @@ type API struct {
 
 type Config struct {
 	AppName      string
-	APIKey       string
 	APIPrefix    string
 	AllowedHosts string
 	Debug        bool

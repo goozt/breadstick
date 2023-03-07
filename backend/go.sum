@@ -12,8 +12,6 @@ github.com/go-playground/validator/v10 v10.11.2 h1:q3SHpufmypg+erIExEKUmsgmhDTyh
 github.com/go-playground/validator/v10 v10.11.2/go.mod h1:NieE624vt4SCTJtD87arVLvdmjPAeV8BQlHtMnw9D7s=
 github.com/gofiber/fiber/v2 v2.42.0 h1:Fnp7ybWvS+sjNQsFvkhf4G8OhXswvB6Vee8hM/LyS+8=
 github.com/gofiber/fiber/v2 v2.42.0/go.mod h1:3+SGNjqMh5VQH5Vz2Wdi43zTIV16ktlFd3x3R6O1Zlc=
-github.com/gofiber/keyauth/v2 v2.1.32 h1:ExnCEUlgF4pQn8BLPa4VMVR12R78KtrJe0h4SqQAK5Q=
-github.com/gofiber/keyauth/v2 v2.1.32/go.mod h1:zeJzlvfvjMH31A1b0NaK3FkO7mCoOiK02Xl748XHHNI=
 github.com/gofiber/storage/bbolt v1.3.4 h1:Ya1loAcfq8pwuptsdExIihV6ho/4rF8mol1s1XCyIlA=
 github.com/gofiber/storage/bbolt v1.3.4/go.mod h1:GibrOAQTFOzzzWWVCgq+V+gS8dUbaPeAMGI4FNZ32sI=
 github.com/gofiber/utils v1.0.1 h1:knct4cXwBipWQqFrOy1Pv6UcgPM+EXo9jDgc66V1Qio=

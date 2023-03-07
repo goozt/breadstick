@@ -12,13 +12,12 @@ var config = api.Config{
 	AppName:      "Restaurant API v1",
 	APIPrefix:    "/api/v1",
 	AllowedHosts: "https://breadstick.goozt.org, http://localhost:5173, http://localhost:4173",
-	Debug:        false,
+	Debug:        true,
 	CacheTimeout: 30 * time.Second,
 }
 
 func main() {
-	TokenCmd()
-	config.APIKey = LoadKey()
+	LoadEnvironment()
 	server := api.NewServer(config)
 	LoadMiddlewares(server)
 	RegisterHandlers(server)

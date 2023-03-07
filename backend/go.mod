@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/go-playground/validator/v10 v10.11.2
 	github.com/gofiber/fiber/v2 v2.42.0
-	github.com/gofiber/keyauth/v2 v2.1.32
 	github.com/gofiber/storage/bbolt v1.3.4
 	github.com/gofiber/utils v1.0.1
 	github.com/google/uuid v1.3.0

@@ -6,7 +6,6 @@ const fetchData = async (method: string, url: string, data: unknown) => {
 		mode: 'cors',
 		headers: {
 			Accept: 'application/json',
-			Authorization: 'Bearer ' + env.token,
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)

@@ -8,7 +8,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/pprof"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/fiber/v2/middleware/requestid"
-	"github.com/gofiber/keyauth/v2"
 	"goozt.org/breakstick/api"
 )
 
@@ -28,8 +27,5 @@ func LoadMiddlewares(a *api.API) {
 	a.Use(cors.New(cors.Config{
 		AllowMethods: "GET,POST,HEAD,PUT,DELETE,OPTIONS",
 		AllowOrigins: config.AllowedHosts,
-	}))
-	a.Use(keyauth.New(keyauth.Config{
-		Validator: validateAPIKey,
 	}))
 }
