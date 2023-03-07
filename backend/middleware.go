@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/csrf"
 	"github.com/gofiber/fiber/v2/middleware/idempotency"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -27,5 +28,8 @@ func LoadMiddlewares(a *api.API) {
 	a.Use(cors.New(cors.Config{
 		AllowMethods: "GET,POST,HEAD,PUT,DELETE,OPTIONS",
 		AllowOrigins: config.AllowedHosts,
+	}))
+	a.Use(csrf.New(csrf.Config{
+		CookieSameSite: "Strict",
 	}))
 }
